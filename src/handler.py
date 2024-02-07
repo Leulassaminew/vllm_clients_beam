@@ -23,8 +23,7 @@ async def handler(job):
     j=job["input"]
     t=j["task"]
     if t!="report":
-        messages=j["messages"][-1]
-        messages=messages["content"]
+        messages=j["prompt"]
         count_usage=j.pop("count_usage")
         score=j.pop("score")
         model,tokenize=load_model()
