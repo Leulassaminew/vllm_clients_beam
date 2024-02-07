@@ -276,12 +276,7 @@ class vLLMEngine:
         else:
             difficulty, interest, busy,obj = "hard", "not interested", "very busy","low"
             doi, fid, needi,inti,chance,tend = "low", "low", "low","low","low","low"
-        c={
-            "role":"system",
-            "content":past
-        }
-        p=[c]
-        llm_input=p+llm_input
+        llm_input=past+"\n user: "+llm_input+ character+":" 
         if apply_chat_template or isinstance(llm_input, list):
             llm_input = self.tokenizer.apply_chat_template(llm_input)
         validated_sampling_params = SamplingParams(**validated_sampling_params)
